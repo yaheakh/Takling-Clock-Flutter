@@ -31,11 +31,11 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '8.10.2'
+          gradle-version: '8.14.0'
 
       - name: Generate Gradle wrapper (pinned version)
         working-directory: android
-        run: gradle wrapper --gradle-version 8.10.2
+        run: gradle wrapper --gradle-version 8.14.0
 
       - name: Install dependencies
         run: flutter pub get
