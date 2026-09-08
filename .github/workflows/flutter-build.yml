@@ -31,11 +31,11 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '9.5'
+          gradle-version: 'current'
 
-      - name: Generate Gradle wrapper (matching the installed version)
+      - name: Generate Gradle wrapper (targeting 9.5, compatible with AGP 8.11.1)
         working-directory: android
-        run: gradle wrapper
+        run: gradle wrapper --gradle-version 9.5
 
       - name: Install dependencies
         run: flutter pub get
