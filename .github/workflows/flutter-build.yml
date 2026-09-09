@@ -31,7 +31,7 @@ jobs:
       - name: Find a compatible Gradle version (9.5.x — new enough for Flutter, old enough for AGP 8.11.1)
         id: findgradle
         run: |
-          VERSION=$(curl -s https://services.gradle.org/versions/all | python3 -c "import json,sys; data=json.load(sys.stdin); c=[v['version'] for v in data if v['version'].startswith('9.5') and not v.get('broken') and not v.get('snapshot') and not v.get('nightly') and not v.get('releaseNightly') and not v.get('rcFor')]; c.sort(key=lambda s: [int(p) for p in s.split('.')]); print(c[-1] if c else '')")
+          VERSION=$(curl -s https://services.gradle.org/versions/all | python3 -c "import json,sys; data=json.load(sys.stdin); c=[v['version'] for v in data if v['version'].startswith('9.5') and '-' not in v['version'] and not v.get('broken') and not v.get('snapshot') and not v.get('nightly') and not v.get('releaseNightly')]; c.sort(key=lambda s: [int(p) for p in s.split('.')]); print(c[-1] if c else '')")
           if [ -z "$VERSION" ]; then
             echo "No 9.5.x release found on services.gradle.org — falling back to '9.5'"
             VERSION="9.5"
