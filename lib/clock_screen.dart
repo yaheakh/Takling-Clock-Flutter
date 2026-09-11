@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'app_state.dart';
@@ -64,7 +65,7 @@ class _ClockScreenState extends State<ClockScreen> with SingleTickerProviderStat
     final isAr = s.language == 'ar';
 
     return Directionality(
-      textDirection: isAr ? TextDirection.rtl : TextDirection.ltr,
+      textDirection: isAr ? ui.TextDirection.rtl : ui.TextDirection.ltr,
       child: Scaffold(
         backgroundColor: palette.background,
         body: Stack(
@@ -208,7 +209,7 @@ class _ClockColumn extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Directionality(
-            textDirection: TextDirection.ltr, // clock digits always LTR
+            textDirection: ui.TextDirection.ltr, // clock digits always LTR
             child: RichText(
               text: TextSpan(
                 style: const TextStyle(fontFamily: 'monospace', fontWeight: FontWeight.w400),
